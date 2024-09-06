@@ -15,6 +15,7 @@ jobs:
         with:
           name: linux-x64
           path: out/make/zip/linux/x64/bruno-pdf-*.zip
+          retention-days: 1
 
   win64:
     name: Windows (x64)
@@ -27,3 +28,4 @@ jobs:
         with:
           name: win32-x64
           path: out/make/zip/win32/x64/bruno-pdf-*.zip
+          retention-days: 1
