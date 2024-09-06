@@ -13,8 +13,8 @@ jobs:
       - run: npm run make -- --platform=linux --arch=x64 --targets=@electron-forge/maker-zip
       - uses: actions/upload-artifact@v4
         with:
-          name: linux-x64
-          path: out/make/zip/linux/x64/bruno-pdf-*.zip
+          name: linux-x64-zip
+          path: out/make/zip/linux/x64/*
           retention-days: 1
 
   win64:
@@ -23,9 +23,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm install
-      - run: npm run make -- --platform=win32 --arch=x64 --targets=@electron-forge/maker-zip
+      - run: npm run make -- --platform=win32 --arch=x64 --targets=@electron-forge/maker-zip,@electron-forge/maker-squirrel
       - uses: actions/upload-artifact@v4
         with:
-          name: win32-x64
-          path: out/make/zip/win32/x64/bruno-pdf-*.zip
+          name: win32-x64-zip
+          path: |
+            out/make/zip/win32/x64/*
+          retention-days: 1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: win32-x64-squirrel
+          path: |
+            out/make/squirrel.windows/x64/*
           retention-days: 1
