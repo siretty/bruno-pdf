@@ -24,8 +24,11 @@ const args = util.parseArgs({
         fullscreen: { type: 'boolean', default: false },
         'pdf-file': { type: 'string' },
         // ignore squirrel arguments (used during setup)
+        'squirrel-install': { type: 'string' },
         'squirrel-firstrun': { type: 'boolean', default: false },
-        'squirrel-install': { type: 'boolean', default: false },
+        'squirrel-updated': { type: 'string' },
+        'squirrel-obsolete': { type: 'string' },
+        'squirrel-uninstall': { type: 'string' },
     },
     strict: true,
     allowNegative: false,
