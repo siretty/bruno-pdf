@@ -36,6 +36,8 @@ const createWindow = () => {
         },
     });
 
+    mainWindow.setMenu(null)
+
     mainWindow.once('ready-to-show', () => {
         mainWindow.show()
     })
