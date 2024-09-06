@@ -28,13 +28,11 @@ jobs:
         with:
           name: win32-x64-zip
           path: |
-            out/make/zip/win32/x64/bruno-pdf-*.zip
+            out/make/zip/win32/x64/*
           retention-days: 1
       - uses: actions/upload-artifact@v4
         with:
           name: win32-x64-squirrel
           path: |
-            out/make/squirrel/win32/x64/*Setup.exe
-            out/make/squirrel/win32/x64/*-full.nupkg
-            out/make/squirrel/win32/x64/RELEASES
+            out/make/squirrel.windows/x64/*
           retention-days: 1
