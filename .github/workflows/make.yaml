@@ -55,6 +55,7 @@ jobs:
       - uses: actions/download-artifact@v4
       - run: rm -rf _o && mkdir -p _o
       # prepare linux-x64-zip artifacts
+      - run: ls -R *
       - run: mv -v "linux-x64-zip/bruno-pdf-linux-x64-${{ steps.package_json.outputs.version }}.zip" "_o/"
       - run: mv -v "linux-x64-zip/RELEASES" "_o/bruno-pdf-linux-x64-${{ steps.package_json.outputs.version }}-RELEASES"
       # prepare win32-x64-squirrel artifacts
