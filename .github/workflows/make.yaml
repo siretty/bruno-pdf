@@ -14,7 +14,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: linux-x64-zip
-          path: out/make/zip/linux/x64/bruno-pdf-*.zip
+          path: out/make/zip/linux/x64/*
           retention-days: 1
 
   win64:
