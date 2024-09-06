@@ -1,0 +1,38 @@
+/* css reset from https://www.joshwcomeau.com/css/custom-css-reset/ */
+/* @formatter:off */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+body { line-height: 1.5; -webkit-font-smoothing: antialiased; }
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+input, button, textarea, select { font: inherit; }
+p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
+#root, #__next { isolation: isolate; }
+/* @formatter:on */
+
+
+body {
+    font-family: sans-serif;
+    background: #333;
+}
+
+canvas {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 16px 16px 0 16px;
+    border: 0;
+}
+
+div#col {
+    display: block;
+    margin: 0;
+    padding: 0 0 16px 0;
+    border: 0;
+}
+
+div.row {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
