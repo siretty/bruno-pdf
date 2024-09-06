@@ -1,5 +1,4 @@
 const {app, BrowserWindow, ipcMain} = require('electron');
-const path = require('node:path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -7,18 +6,41 @@ if (require('electron-squirrel-startup')) {
 }
 
 const fs = require('node:fs')
+const path = require('node:path');
 const process = require('node:process')
+const util = require('node:util')
 
-let pdfFilePath = null
+let argv = null
 
 if (app.isPackaged) {
-    pdfFilePath = process.argv[1];
+    argv = process.argv.slice(1);
 } else {
-    pdfFilePath = process.argv[2];
+    argv = process.argv.slice(2);
 }
 
-if (!pdfFilePath) {
+const args = util.parseArgs({
+    args: argv,
+    options: {
+        fullscreen: { type: 'boolean', default: false },
+        'pdf-file': { type: 'string' }
+    },
+    strict: true,
+    allowNegative: false,
+    allowPositionals: false,
+})
+
+const argFullscreen = args.values.fullscreen
+const argPdfFile = args.values['pdf-file']
+
+if (!argPdfFile) {
     console.log('path to pdf file missing')
+    process.exit(1)
+}
+
+const pdfFilePath = path.resolve(argPdfFile)
+
+if (!fs.existsSync(pdfFilePath)) {
+    console.log('pdf file path does not exist')
     process.exit(1)
 }
 
@@ -30,7 +52,7 @@ const createWindow = () => {
         width: 800,
         height: 600,
         show: false,
-        fullscreen: true,
+        fullscreen: argFullscreen,
         webPreferences: {
             preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
         },
