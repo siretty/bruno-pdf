@@ -22,7 +22,10 @@ const args = util.parseArgs({
     args: argv,
     options: {
         fullscreen: { type: 'boolean', default: false },
-        'pdf-file': { type: 'string' }
+        'pdf-file': { type: 'string' },
+        // ignore squirrel arguments (used during setup)
+        'squirrel-firstrun': { type: 'boolean', default: false },
+        'squirrel-install': { type: 'boolean', default: false },
     },
     strict: true,
     allowNegative: false,
